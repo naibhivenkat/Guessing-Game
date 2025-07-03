@@ -1,0 +1,59 @@
+# .github/workflows/android_build.yml
+name: Android APK Build
+
+on:
+  push:
+    branches:
+      - main # Trigger on pushes to the main branch
+  pull_request:
+    branches:
+      - main # Trigger on pull requests to the main branch
+
+jobs:
+  build_android_apk:
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4 # Use actions/checkout to get your repository code
+
+    - name: Set up Python
+      uses: actions/setup-python@v5 # Set up Python environment
+      with:
+        python-version: '3.10' # Use a Python version compatible with BeeWare/Briefcase
+
+    - name: Install Briefcase and Toga
+      run: |
+        python -m pip install --upgrade pip
+        pip install briefcase toga-android toga-core # Install necessary BeeWare components
+
+    - name: Create Android project
+      # This command initializes the Android project structure.
+      # It downloads necessary Android SDK components if not present.
+      run: briefcase create android
+
+    - name: Build Android APK
+      # This command compiles the Python code into an Android app and builds the APK.
+      run: briefcase build android
+
+    - name: Package Android APK
+      # This command packages the built app into a distributable APK.
+      run: briefcase package android
+
+    - name: Find APK file
+      # Briefcase places the APK in a specific location. We need to find it.
+      id: find_apk
+      run: |
+        APK_PATH=$(find . -name "*.apk" -print -quit)
+        if [ -z "$APK_PATH" ]; then
+          echo "No APK file found!"
+          exit 1
+        fi
+        echo "APK_PATH=$APK_PATH" >> $GITHUB_OUTPUT
+
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4 # Upload the generated APK as a workflow artifact
+      with:
+        name: GuessingGame-APK
+        path: ${{ steps.find_apk.outputs.APK_PATH }}
+        retention-days: 7 # Keep the artifact for 7 days
