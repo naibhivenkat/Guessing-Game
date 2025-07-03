@@ -1,4 +1,4 @@
-tool.briefcase]
+[tool.briefcase]
 # Global defaults for the project (can be overridden by app-specific settings)
 # These are added to satisfy potential global configuration checks by Briefcase.
 bundle = "com.example"
