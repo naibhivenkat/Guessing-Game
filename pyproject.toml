@@ -1,6 +1,6 @@
 [tool.briefcase]
 # Global defaults for the project (can be overridden by app-specific settings)
-briefcase_version = "0.3.15" # Pinned to a potentially more stable version
+briefcase_version = "0.3.18" # Pinned to the latest stable version
 bundle = "com.example"
 project_name = "GuessingGameProject"
 version = "0.0.1"
@@ -26,10 +26,11 @@ requires = [
     "toga-android",
     "toga-core",
 ]
-# IMPORTANT: Simplified main_module and app_module to just "app".
-# Briefcase should resolve this based on the 'sources' setting.
-main_module = "app"
-app_module = "app"
+# The entry point for the application.
+# Reverted to full dotted path as this is standard and the error is likely Briefcase version specific.
+main_module = "guessing_game.app"
+# The name of the app module (used by Briefcase to find the app object).
+app_module = "guessing_game.app"
 
 # Android-specific options
 [tool.briefcase.app.guessing_game.android]
