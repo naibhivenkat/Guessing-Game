@@ -1,0 +1,39 @@
+[tool.briefcase]
+# The current version of the Briefcase tools being used.
+briefcase_version = "0.3.17" # Use a recent stable version
+
+[tool.briefcase.app.guessing_game]
+# Basic properties of the application.
+formal_name = "Guessing Game"
+product_name = "GuessingGame"
+bundle = "com.example.guessinggame"
+version = "0.0.1"
+url = "https://www.example.com/guessing-game"
+license = "MIT license"
+author = "Your Name"
+author_email = "your.email@example.com"
+
+# The Python version to use for the app.
+requires = [
+    "toga-android==0.3.0.dev1", # Use a compatible Toga version for Android
+    "toga-core==0.3.0.dev1",
+]
+# The entry point for the application.
+main_module = "app"
+# The name of the app module (used by Briefcase to find the app).
+app_module = "app"
+
+# Android-specific options
+[tool.briefcase.app.guessing_game.android]
+# The Android API level to target.
+target_api = 33 # Or a more recent stable API level
+# The minimum Android API level supported.
+min_api = 21
+# The list of permissions the app requires.
+permissions = []
+# The list of devices to build for.
+device_type = "handset"
+# The list of architectures to build for.
+supported_abis = ["armeabi-v7a", "arm64-v8a", "x86", "x86_64"]
+# The icon for the app (path relative to the project root).
+icon = "static/icon.png" # You'll need to create a simple icon.png
