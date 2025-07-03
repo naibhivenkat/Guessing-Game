@@ -16,13 +16,15 @@ author = "Venkat"
 author_email = "venkat.naibhi@gmail.com"
 description = "A simple number guessing game for Android."
 
-# IMPORTANT: 'sources' now points directly to your top-level package.
+# 'sources' points directly to your top-level package.
 sources = ["guessing_game"]
 
 # The Python version to use for the app.
+# IMPORTANT: Removed specific development version pins for Toga.
+# This allows pip to fetch the latest stable and compatible versions.
 requires = [
-    "toga-android==0.3.0.dev1", # Use a compatible Toga version for Android
-    "toga-core==0.3.0.dev1",
+    "toga-android",
+    "toga-core",
 ]
 # The entry point for the application.
 main_module = "guessing_game.app"
