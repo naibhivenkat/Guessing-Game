@@ -1,4 +1,4 @@
-[tool.briefcase]
+tool.briefcase]
 # Global defaults for the project (can be overridden by app-specific settings)
 # These are added to satisfy potential global configuration checks by Briefcase.
 bundle = "com.example"
@@ -13,8 +13,10 @@ bundle = "com.example.guessinggame" # App-specific bundle, overrides global
 version = "0.0.1" # App-specific version, overrides global
 url = "https://www.example.com/guessing-game"
 license.file = "LICENSE" # Points to the LICENSE file
-author = "Your Name"
-author_email = "your.email@example.com"
+author = "Venkat"
+author_email = "venkat.naibhi@gmail.com"
+description = "A simple number guessing game for Android." # Added missing description
+sources = ["src"] # Added missing sources, assuming your app.py and game_logic.py are in a 'src' directory
 
 # The Python version to use for the app.
 requires = [
