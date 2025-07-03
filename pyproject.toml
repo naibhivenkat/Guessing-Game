@@ -1,5 +1,6 @@
 [tool.briefcase]
 # Global defaults for the project (can be overridden by app-specific settings)
+briefcase_version = "0.3.15" # Pinned to a potentially more stable version
 bundle = "com.example"
 project_name = "GuessingGameProject"
 version = "0.0.1"
@@ -20,16 +21,15 @@ description = "A simple number guessing game for Android."
 sources = ["guessing_game"]
 
 # The Python version to use for the app.
-# IMPORTANT: Removed specific development version pins for Toga.
-# This allows pip to fetch the latest stable and compatible versions.
+# Removed specific development version pins for Toga, allowing pip to fetch compatible versions.
 requires = [
     "toga-android",
     "toga-core",
 ]
-# The entry point for the application.
-main_module = "guessing_game.app"
-# The name of the app module (used by Briefcase to find the app object).
-app_module = "guessing_game.app"
+# IMPORTANT: Simplified main_module and app_module to just "app".
+# Briefcase should resolve this based on the 'sources' setting.
+main_module = "app"
+app_module = "app"
 
 # Android-specific options
 [tool.briefcase.app.guessing_game.android]
