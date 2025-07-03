@@ -1,6 +1,5 @@
 [tool.briefcase]
 # Global defaults for the project (can be overridden by app-specific settings)
-# These are added to satisfy potential global configuration checks by Briefcase.
 bundle = "com.example"
 project_name = "GuessingGameProject"
 version = "0.0.1"
@@ -15,8 +14,10 @@ url = "https://www.example.com/guessing-game"
 license.file = "LICENSE" # Points to the LICENSE file
 author = "Venkat"
 author_email = "venkat.naibhi@gmail.com"
-description = "A simple number guessing game for Android." # Added missing description
-sources = ["src"] # This correctly points to the directory containing your top-level package
+description = "A simple number guessing game for Android."
+
+# IMPORTANT: 'sources' now points directly to your top-level package.
+sources = ["guessing_game"]
 
 # The Python version to use for the app.
 requires = [
@@ -24,7 +25,6 @@ requires = [
     "toga-core==0.3.0.dev1",
 ]
 # The entry point for the application.
-# IMPORTANT: This now points to the 'app' module *inside* the 'guessing_game' package.
 main_module = "guessing_game.app"
 # The name of the app module (used by Briefcase to find the app object).
 app_module = "guessing_game.app"
