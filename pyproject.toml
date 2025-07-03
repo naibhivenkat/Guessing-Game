@@ -1,15 +1,18 @@
 [tool.briefcase]
-# The current version of the Briefcase tools being used.
-briefcase_version = "0.3.17" # Use a recent stable version
+# Global defaults for the project (can be overridden by app-specific settings)
+# These are added to satisfy potential global configuration checks by Briefcase.
+bundle = "com.example"
+project_name = "GuessingGameProject"
+version = "0.0.1"
 
 [tool.briefcase.app.guessing_game]
 # Basic properties of the application.
 formal_name = "Guessing Game"
 product_name = "GuessingGame"
-bundle = "com.example.guessinggame"
-version = "0.0.1"
+bundle = "com.example.guessinggame" # App-specific bundle, overrides global
+version = "0.0.1" # App-specific version, overrides global
 url = "https://www.example.com/guessing-game"
-license = "MIT license"
+license.file = "LICENSE" # Points to the LICENSE file
 author = "Your Name"
 author_email = "your.email@example.com"
 
